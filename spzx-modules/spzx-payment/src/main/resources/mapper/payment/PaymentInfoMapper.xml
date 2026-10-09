@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spzx.payment.mapper.PaymentInfoMapper">
+
+    <resultMap type="PaymentInfo" id="PaymentInfoResult" autoMapping="true">
+    </resultMap>
+
+    <sql id="selectPaymentInfoVo">
+        select id, user_id, order_no, pay_type, trade_no, amount, content, payment_status, callback_time, callback_content, create_time, create_by, update_time, update_by, del_flag, remark from payment_info
+    </sql>
+
+
+</mapper>

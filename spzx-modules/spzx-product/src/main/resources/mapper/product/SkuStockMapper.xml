@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spzx.product.mapper.SkuStockMapper">
+
+    <!--
+        for update  数据库行锁。互斥锁。加了行锁，别的事务不能查询。
+    -->
+    <select id="check" resultType="SkuStock">
+        select *
+        from sku_stock
+        where sku_id = #{skuId}
+          and available_num >= #{skuNum}
+          and del_flag = '0' for update
+    </select>
+
+    
+    <update id="lock">
+        update sku_stock
+        set available_num = available_num - #{skuNum},
+            lock_num      = lock_num + #{skuNum}
+        where sku_id = #{skuId} and del_flag = '0'
+    </update>
+
+    <update id="unlock">
+        update sku_stock
+        set available_num = available_num + #{skuNum},
+            lock_num      = lock_num - #{skuNum}
+        where sku_id = #{skuId} and del_flag = '0'
+    </update>
+
+    <update id="minus">
+        update sku_stock
+        set total_num = total_num - #{skuNum},
+            lock_num  = lock_num - #{skuNum},
+            sale_num  = sale_num + #{skuNum}
+        where sku_id = #{skuId}
+          and del_flag = '0'
+    </update>
+    <!--校验和减库存-->
+    <update id="checkAndSubStock">
+        update `spzx-product`.sku_stock
+        set total_num = total_num - #{skuNum},
+            available_num = available_num - #{skuNum},
+            sale_num = sale_num + #{skuNum}
+        where sku_id = #{skuId} and available_num - #{skuNum} >= 0
+              and del_flag = '0'
+    </update>
+
+</mapper>

@@ -1,0 +1,3 @@
+com.spzx.common.redis.configure.RedisConfig
+com.spzx.common.redis.service.RedisService
+com.spzx.common.redis.cache.GuiguCacheAspect

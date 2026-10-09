@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.spzx</groupId>
+        <artifactId>spzx-parent</artifactId>
+        <version>3.6.3</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>spzx-system</module>
+        <module>spzx-gen</module>
+        <module>spzx-job</module>
+        <module>spzx-file</module>
+        <module>spzx-product</module>
+        <module>spzx-user</module>
+        <module>spzx-order</module>
+        <module>spzx-channel</module>
+        <module>spzx-cart</module>
+        <module>spzx-payment</module>
+    </modules>
+
+    <artifactId>spzx-modules</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        spzx-modules业务模块
+    </description>
+
+    <!--
+    spzx-modules模块依赖了spzx-api-product远程openFeign模块，子模块都可以继承使用，无需单独依赖。
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>com.spzx</groupId>
+            <artifactId>spzx-api-product</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.spzx</groupId>
+            <artifactId>spzx-api-user</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.spzx</groupId>
+            <artifactId>spzx-api-cart</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.spzx</groupId>
+            <artifactId>spzx-api-order</artifactId>
+            <version>3.6.3</version>
+        </dependency>
+    </dependencies>
+</project>

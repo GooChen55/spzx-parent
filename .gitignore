@@ -1,0 +1,65 @@
+######################################################################
+# Build Tools
+
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+######################################################################
+# IDE
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### JRebel ###
+rebel.xml
+### NetBeans ###
+nbproject/private/
+build/*
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+######################################################################
+# Others
+*.log
+*.xml.versionsBackup
+*.swp
+
+!*/build/*.java
+!*/build/*.html
+!*/build/*.xml
+# Local dependencies, runtime output and credentials
+node_modules/
+logs/
+coverage/
+.DS_Store
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+*.pfx
+/docker/mysql/data/
+/docker/mysql/logs/
+/docker/redis/data/
+/docker/nacos/logs/
+/docker/nginx/logs/
+
+# Keep a reproducible frontend dependency lockfile
+!spzx-ui/yarn.lock

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spzx.user.mapper.UserInfoMapper">
+
+    <resultMap type="UserInfo" id="UserInfoResult" autoMapping="true">
+    </resultMap>
+
+    <sql id="selectUserInfoVo">
+        select id, username, password, nick_name, phone, avatar, sex, memo, open_id, union_id, last_login_ip, last_login_time, status, create_time, create_by, update_time, update_by, del_flag, remark from user_info
+    </sql>
+
+    <!--
+    and 优先级高于  or
+    -->
+    <select id="selectUserInfoList" parameterType="UserInfo" resultMap="UserInfoResult">
+        <include refid="selectUserInfoVo"/>
+        <where>
+            <if test="username != null  and username != ''">
+                and (username like concat('%', #{username}, '%') or nick_name like concat('%', #{username}, '%') or
+                phone = #{username})
+            </if>
+            <if test="params.beginTime != null and params.beginTime != ''">and date_format(create_time,'%Y-%m-%d') >= #{params.beginTime}</if>
+            <if test="params.endTime != null and params.endTime != '' ">and date_format(create_time,'%Y-%m-%d') &lt;= #{params.endTime}</if>
+            and del_flag = 0
+        </where>
+    </select>
+
+
+</mapper>

@@ -2,7 +2,7 @@
 
 基于 RuoYi 扩展的电商微服务项目，使用 Java 17、Spring Boot 3、Spring Cloud Alibaba 和 Vue 3，覆盖商品、用户、购物车、订单及支付宝支付接入。
 
-> 当前仓库发布项目文档，业务源码尚未上传。以下说明依据本地 `spzx-parent` 源码整理，启动步骤适用于取得完整源码与配套配置后。数据库初始化脚本和 Nacos 配置导出暂未提供，尚未验证完整部署。
+> 本仓库已包含后端微服务与 Vue 3 管理端源码。启动前仍需准备配套配置。数据库初始化脚本和 Nacos 配置导出暂未提供，尚未验证完整部署。
 
 ## 项目能力
 
@@ -35,7 +35,7 @@
 
 ## 模块结构
 
-以下为完整源码结构；当前远程文档仓库尚未包含这些模块。
+仓库采用 Maven 多模块结构，前端位于 `spzx-ui`。
 
 ```text
 spzx-parent/
@@ -63,7 +63,12 @@ spzx-parent/
 
 ## 本地开发
 
-### 1. 准备环境
+### 1. 获取源码与准备环境
+
+```bash
+git clone https://github.com/GooChen55/spzx-parent.git
+cd spzx-parent
+```
 
 - JDK 17、Maven，以及支持 Vite 5 的 Node.js 和 npm。
 - MySQL、Redis、Nacos；使用订单消息流程时需要 RabbitMQ。
@@ -123,7 +128,7 @@ npm run build:prod
 
 ## 后续完善
 
-- 上传整理后的项目源码。
+- 整理并持续完善项目源码。
 - 补充数据库初始化脚本及脱敏 Nacos 配置示例。
 - 补充业务流程图、真实页面截图和接口使用示例。
 - 对齐 Docker 构建目录与业务模块。

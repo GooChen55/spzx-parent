@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spzx.product.mapper.BrandMapper" >
+    <!--根据条件查询-->
+    <select id="getPageList" resultType="com.spzx.product.api.domain.Brand">
+        select id, name, logo, create_time, create_by, update_time, update_by, del_flag, remark
+            from `spzx-product`.brand
+        <where>
+            del_flag = 0
+            <if test="name != null and name != ''">
+                and name like "%"#{name}"%"
+            </if>
+        </where>
+    </select>
+    <!--查询所有-->
+    <select id="findAll" resultType="com.spzx.product.api.domain.Brand">
+        select id, name, logo, create_time, create_by, update_time, update_by, del_flag, remark
+            from `spzx-product`.brand
+        where del_flag = 0
+    </select>
+</mapper>
