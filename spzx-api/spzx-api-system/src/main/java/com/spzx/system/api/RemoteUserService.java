@@ -18,7 +18,9 @@ import com.spzx.system.api.model.LoginUser;
  * 
  * @author spzx
  */
-@FeignClient(contextId = "remoteUserService", value = ServiceNameConstants.SYSTEM_SERVICE, fallbackFactory = RemoteUserFallbackFactory.class)
+@FeignClient(contextId = "remoteUserService",
+        value = ServiceNameConstants.SYSTEM_SERVICE,
+        fallbackFactory = RemoteUserFallbackFactory.class)
 public interface RemoteUserService
 {
     /**

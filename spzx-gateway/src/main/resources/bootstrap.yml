@@ -15,9 +15,13 @@ spring:
       discovery:
         # 服务注册地址
         server-addr: 192.168.6.100:8848
+        namespace: 427cfad1-0eaf-4721-bced-fd920c3767db
+        group: DEFAULT_GROUP
       config:
         # 配置中心地址
         server-addr: 192.168.6.100:8848
+        namespace: 427cfad1-0eaf-4721-bced-fd920c3767db
+        group: DEFAULT_GROUP
         # 配置文件格式
         file-extension: yml
         # 共享配置
@@ -34,6 +38,7 @@ spring:
         ds1:
           nacos:
             server-addr: 192.168.6.100:8848
+            namespace: 427cfad1-0eaf-4721-bced-fd920c3767db
             dataId: sentinel-spzx-gateway
             groupId: DEFAULT_GROUP
             data-type: json
